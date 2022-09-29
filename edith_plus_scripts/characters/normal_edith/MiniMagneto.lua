@@ -4,8 +4,9 @@ local MiniMagneto = {}
 
 
 local function IsInPickupWhiteList(pickup)
-    for _, variant in ipairs(Constants.MINI_MAGNETO_PICKUP_WHITELIST) do
-        if variant == pickup.Variant then
+    for _, pickupWhiteList in ipairs(Constants.MINI_MAGNETO_PICKUP_WHITELIST) do
+        if pickupWhiteList.Variant == pickup.Variant and
+        (pickupWhiteList.SubType == pickup.Subtype or pickupWhiteList.SubType == -1) then
             return true
         end
     end

@@ -62,16 +62,20 @@ Constants.MAX_SAFETY_ROOM_TRANSITION_TIMER = 20
 Constants.MAX_FRAMES_TO_TP = 2
 Constants.MINI_MAGNETO_RADIUS = 35
 Constants.MINI_MAGNETO_PICKUP_WHITELIST = {
-    PickupVariant.PICKUP_HEART,
-    PickupVariant.PICKUP_COIN,
-    PickupVariant.PICKUP_KEY,
-    PickupVariant.PICKUP_BOMB,
-    PickupVariant.PICKUP_POOP,
-    PickupVariant.PICKUP_GRAB_BAG,
-    PickupVariant.PICKUP_PILL,
-    PickupVariant.PICKUP_LIL_BATTERY,
-    PickupVariant.PICKUP_TAROTCARD,
-    PickupVariant.PICKUP_TRINKET
+    {Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_BLENDED},
+	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_SOUL},
+	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_ETERNAL},
+	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_GOLDEN},
+	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_HALF_SOUL},
+	{Variant = PickupVariant.PICKUP_COIN, SubType = -1},
+	{Variant = PickupVariant.PICKUP_KEY, SubType = -1},
+	{Variant = PickupVariant.PICKUP_BOMB, SubType = -1},
+	{Variant = PickupVariant.PICKUP_POOP, SubType = -1},
+	{Variant = PickupVariant.PICKUP_GRAB_BAG, SubType = -1},
+	{Variant = PickupVariant.PICKUP_PILL, SubType = -1},
+	{Variant = PickupVariant.PICKUP_LIL_BATTERY, SubType = -1},
+	{Variant = PickupVariant.PICKUP_TAROTCARD, SubType = -1},
+	{Variant = PickupVariant.PICKUP_TRINKET, SubType = -1},
 }
 Constants.MINI_MAGNETO_PICKUP_SPEED = 3
 Constants.MINI_MAGENTO_PICKUP_ACCEL = 0.5
@@ -128,7 +132,7 @@ Constants.GOMORRAHS_DEMISE_BIG_METEORITE_CHANCE = 10
 
 --Small meteorite stuff
 Constants.SMALL_METEORITE_FALLING_DIRECTION = Vector(1, 4):Normalized()
-Constants.SMALL_METEORITE_FALLING_SPEED = 16
+Constants.SMALL_METEORITE_FALLING_SPEED = 13
 Constants.SMALL_METEORITE_STARTING_HEIGHT_BASE = 600
 Constants.SMALL_METEORITE_STARTING_HEIGHT_RANDOM = 200
 Constants.SMALL_METEORITE_RADIUS = 75

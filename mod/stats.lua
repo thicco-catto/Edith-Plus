@@ -84,8 +84,8 @@ EdithPlus:AddCostume("edith_hoodie")
 
 -- next we need to setup our players stats
 local NormalStats = Characters.newStatTable() -- create a new stat table
-NormalStats.Damage = 4
-NormalStats.Firedelay = 3.73
+NormalStats.Damage = 3.75
+NormalStats.Firedelay = 3.85
 NormalStats.Shotspeed = 1.00
 NormalStats.Range = 6.50
 NormalStats.Speed = 1.00
