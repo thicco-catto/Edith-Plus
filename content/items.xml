@@ -1,0 +1,32 @@
+<items gfxroot="gfx/items/" version="1">
+    <passive id="0" name="Sodom's Rain" description="Rainy" gfx="sodoms_rain.png"/>
+    <passive id="1" name="Edith's Scarf" description="Wear it" gfx="ediths_scarf.png" cache="firedelay shotspeed luck"/>
+
+    <familiar id="2" name="Salt Baby" description="Salty friend" gfx="salt_baby.png"/>
+
+    <active id="3" name="Salt Shaker" description="Salty" gfx="salt_shaker.png" maxcharges="3" chargetype="normal" hidden="true"/>
+    <active id="4" name="Gomorrah's Demise" description="Appopalypse" gfx="gomorrahs_demise.png" maxcharges="0"/>
+    <active id="5" name="Lot's Cup" description="Fill it" gfx="lots_cup.png" maxcharges="0" initcharge="0" chargetype="special"/>
+
+    <!--Lot's cup helpers-->
+    <active id="5" name="Lot's Cup 1" description="Fill it" gfx="lots_cup1.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 2" description="Fill it" gfx="lots_cup2.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 3" description="Fill it" gfx="lots_cup3.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 4" description="Fill it" gfx="lots_cup4.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 5" description="Fill it" gfx="lots_cup5.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 6" description="Fill it" gfx="lots_cup6.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 7" description="Fill it" gfx="lots_cup7.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 8" description="Fill it" gfx="lots_cup8.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 9" description="Fill it" gfx="lots_cup9.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 10" description="Fill it" gfx="lots_cup10.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 11" description="Fill it" gfx="lots_cup11.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 12" description="Fill it" gfx="lots_cup12.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 13" description="Fill it" gfx="lots_cup13.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 14" description="Fill it" gfx="lots_cup14.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 15" description="Fill it" gfx="lots_cup15.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 16" description="Fill it" gfx="lots_cup16.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 17" description="Fill it" gfx="lots_cup17.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 18" description="Fill it" gfx="lots_cup18.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 19" description="Fill it" gfx="lots_cup19.png" maxcharges="0" chargetype="special" hidden="true"/>
+    <active id="5" name="Lot's Cup 20" description="Fill it" gfx="lots_cup20.png" maxcharges="0" chargetype="special" hidden="true"/>
+</items>
