@@ -291,6 +291,7 @@ loadFile("edith_plus_scripts/characters/normal_edith/CallusLikeInmunity", {mod, 
 loadFile("edith_plus_scripts/characters/normal_edith/DoubleCreepDamage", {mod, Constants})
 loadFile("edith_plus_scripts/characters/normal_edith/HigherChanceSodomGomorrahFirstDeal", {mod, Constants})
 loadFile("edith_plus_scripts/characters/normal_edith/BiggerTearSize", {mod, Constants})
+loadFile("edith_plus_scripts/characters/normal_edith/SaltCurse", {mod, Constants})
 
 --Items
 loadFile("edith_plus_scripts/items/actives/SaltShaker", {mod, Constants})

@@ -9,6 +9,7 @@ Constants.SODOMS_RAIN_ITEM = Isaac.GetItemIdByName("Sodom's Rain")
 Constants.SALT_BABY_ITEM = Isaac.GetItemIdByName("Salt Baby")
 Constants.LOTS_CUP_ITEM = Isaac.GetItemIdByName("Lot's Cup")
 Constants.EDITHS_SCARF_ITEM = Isaac.GetItemIdByName("Edith's Scarf")
+Constants.EDITHS_CURSE_ITEM = Isaac.GetItemIdByName("Edith's Curse")
 
 Constants.SMALL_METEORITE_FAMILIAR = Isaac.GetEntityVariantByName("small rain meteorite")
 Constants.BIG_METEORITE_FAMILIAR = Isaac.GetEntityVariantByName("big rain meteorite")
@@ -183,5 +184,8 @@ Constants.EDITHS_SCARF_SHOTSPEED = 0.2
 Constants.EDITHS_SCARF_LUCK = -1
 Constants.EDITHS_SCARF_STAT_MULTIPLIER = 0.5
 
+--Edith's Curse stuff
+Constants.SALT_CURSE_CHANCE = 100
+Constants.SALT_CURSE_SOUL_HEART_CHANCE = 100
 
 return Constants
