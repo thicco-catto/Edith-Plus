@@ -63,6 +63,7 @@ Constants.MAX_SAFETY_ROOM_TRANSITION_TIMER = 20
 Constants.MAX_FRAMES_TO_TP = 2
 Constants.MINI_MAGNETO_RADIUS = 35
 Constants.MINI_MAGNETO_PICKUP_WHITELIST = {
+	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_BONE},
     {Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_BLENDED},
 	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_SOUL},
 	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_ETERNAL},

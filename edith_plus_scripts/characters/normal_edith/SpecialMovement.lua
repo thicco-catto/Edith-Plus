@@ -43,7 +43,7 @@ local function CanPlayerTeleport(player)
     --Cant teleport if the controls are disabled
     if not player.ControlsEnabled then return false end
 
-    --Cant teleport if theyre dying
+    --Cant teleport if they're dying
     if player:IsDead() then return false end
 
     return true
@@ -73,7 +73,7 @@ local function TryTransitionThroughDoor(player, targetPos)
     if not doorToGoThrough then return end
     if not doorToGoThrough:IsOpen() then return end
     --If the player is too close, dont go through directly
-    if doorToGoThrough.Position:Distance(player.Position)<= Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT then return end
+    if doorToGoThrough.Position:Distance(player.Position) <= Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT then return end
 
     local level = game:GetLevel()
     local targetRoomIndex = doorToGoThrough.TargetRoomIndex
@@ -88,6 +88,31 @@ local function TryTransitionThroughDoor(player, targetPos)
     end
 
     level.LeaveDoor = doorToGoThrough.Slot
+end
+
+
+local function TryUnlockDoorFromTarget(player, targetPos)
+    if not CanPlayerTeleport(player) then return end
+    if SafetyRoomTransitionTimer > 0 then return end
+
+    local room = game:GetRoom()
+
+    local doorToGoThrough = nil
+
+    for slot = 0, DoorSlot.NUM_DOOR_SLOTS - 1, 1 do
+        ---@cast slot DoorSlot
+        local door = room:GetDoor(slot)
+
+        --Empty door slots return nil
+        if door then
+            if door.Position:Distance(targetPos) <= Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT then
+                doorToGoThrough = door
+            end
+        end
+    end
+
+    if not doorToGoThrough then return end
+    doorToGoThrough:TryUnlock(player, false)
 end
 
 
@@ -166,7 +191,7 @@ local function HandleEdithTeleport(player)
         player.Position = data.EdithTeleportLocation
 
         sprite:Play("TeleportDown", true)
-        sprite:SetFrame(11)
+        sprite:SetFrame(13)
 
         if player:HasCollectible(CollectibleType.COLLECTIBLE_BIRTHRIGHT) then
             --Special shockwave effect for birthright
@@ -216,7 +241,7 @@ function SpecialMovement:OnPlayerUpdate(player)
         if edithTarget.Position:Distance(player.Position) > Constants.MINIMUM_TRAVEL_DISTANCE then
             --Only teleport the player if the distance is greater than the minimum required
             player:PlayExtraAnimation("TeleportUp")
-            player:GetSprite():SetFrame(5)
+            player:GetSprite():SetFrame(6)
 
             player.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
 
@@ -275,6 +300,7 @@ function SpecialMovement:OnTargetUpdate(target)
     target.Velocity = baseVelocity * Constants.TARGET_BASE_SPEED
 
     --Try to move the player through a door
+    TryUnlockDoorFromTarget(player, target.Position)
     TryTransitionThroughDoor(player, target.Position)
 end
 EdithPlusMod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, SpecialMovement.OnTargetUpdate, EffectVariant.TARGET)

@@ -4,7 +4,7 @@ local game = Game()
 
 
 function HigherChanceSodomGomorrahFirstDeal:OnNewRoom()
-    local hasBeatenDelirium = mod.Persistent.Unlocks.EDITH[Constants.CompletionMark.DELIRIUM]
+    local hasBeatenDelirium = EdithPlusMod.Persistent.Unlocks.EDITH[Constants.CompletionMark.DELIRIUM]
     if not hasBeatenDelirium or hasBeatenDelirium == 0 then return end
 
     local room = game:GetRoom()
