@@ -33,7 +33,13 @@ function SaltCurse:OnPlayerDamage(entity, _, flags, source)
 
     enemy = enemy:ToNPC()
 
-    if enemy:GetDropRNG():RandomInt(100) < Constants.SALT_CURSE_CHANCE then
+    local chance = Constants.SALT_CURSE_CHANCE
+
+    if player:GetSoulHearts() <= 4 then
+        chance = Constants.SALT_CURSE_INCREASED_CHANCE
+    end
+
+    if enemy:GetDropRNG():RandomInt(100) < chance then
         local newColor = Color(1, 1, 1, 1, 0.8, 0.5, 0.5)
         enemy.Color = newColor
         enemy.Velocity = Vector.Zero
@@ -54,15 +60,20 @@ function SaltCurse:OnEntityDamage(entity, _, flags)
 
     if flags & DamageFlag.DAMAGE_EXPLOSION == 0 and flags & DamageFlag.DAMAGE_CRUSH == 0 then return false end
 
-    if entity:GetDropRNG():RandomInt(100) < Constants.SALT_CURSE_SOUL_HEART_CHANCE then
-        Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_HEART, HeartSubType.HEART_SOUL, entity.Position, Vector.Zero, nil)
+    local rng = entity:GetDropRNG()
+
+    if rng:RandomInt(100) < Constants.SALT_CURSE_SOUL_HEART_CHANCE then
+        for _ = 1, rng:RandomInt(2)+1, 1 do
+            local velocity = Vector(rng:RandomFloat() * 8 + 4, 0):Rotated(rng:RandomInt(360))
+            Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_HEART, HeartSubType.HEART_SOUL, entity.Position, velocity, nil)
+        end
     end
 
     entity:Remove()
     SFXManager():Play(SoundEffect.SOUND_ROCK_CRUMBLE)
 
-    local minParticles = math.ceil(10 + entity.MaxHitPoints/2)
-    local maxParticles = math.ceil(10 + entity.MaxHitPoints)
+    local minParticles = math.ceil(3 + entity.MaxHitPoints/2)
+    local maxParticles = math.ceil(3 + entity.MaxHitPoints)
     local numParticles = math.random(minParticles, maxParticles)
     for _ = 1, numParticles, 1 do
         local velocity = Vector(3, 0)

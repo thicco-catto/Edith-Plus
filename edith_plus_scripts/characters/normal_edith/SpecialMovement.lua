@@ -250,7 +250,9 @@ function SpecialMovement:OnPlayerUpdate(player)
             else
                 data.EdithTeleportLocation = GetSafePosition(edithTarget.Position)
             end
-            data.EdithTeleportTimer = Constants.MAX_FRAMES_TO_TP
+            data.EdithTeleportTimer = 1 --Constants.MAX_FRAMES_TO_TP
+
+            SFXManager():Play(SoundEffect.SOUND_HELL_PORTAL1)
 
             data.EdithIsTeleporting = true
         else
@@ -297,7 +299,7 @@ function SpecialMovement:OnTargetUpdate(target)
     local baseVelocity = Vector(baseXVelocity, baseYVelocity)
     baseVelocity = baseVelocity:Normalized() * normalizeTarget
 
-    target.Velocity = baseVelocity * Constants.TARGET_BASE_SPEED
+    target.Velocity = baseVelocity * Constants.TARGET_BASE_SPEED * player.MoveSpeed
 
     --Try to move the player through a door
     TryUnlockDoorFromTarget(player, target.Position)
