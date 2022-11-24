@@ -86,7 +86,7 @@ EdithPlus:AddCostume("edith_hoodie")
 local NormalStats = Characters.newStatTable() -- create a new stat table
 NormalStats.Damage = 3.5
 NormalStats.Firedelay = 4
-NormalStats.Shotspeed = 1.00
+NormalStats.Shotspeed = 1.15
 NormalStats.Range = 11.00
 NormalStats.Speed = 1.5
 NormalStats.Tearflags = TearFlags.TEAR_NORMAL

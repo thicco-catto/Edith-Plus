@@ -48,7 +48,7 @@ function SaltShaker:OnPeffectUpdate(player)
                 saltCreep.SpriteScale = Vector(Constants.SALT_CREEP_SCALE, Constants.SALT_CREEP_SCALE)
                 saltCreep.Color = Color(1, 1, 1, 1, 1, 1, 1)
 
-                saltCreep.CollisionDamage = Constants.SALT_CREEP_DAMAGE * numSaltShakerUses
+                saltCreep.CollisionDamage = player.Damage * numSaltShakerUses
 
                 saltCreep:GetData().IsEdithSaltCreep = true
             end
