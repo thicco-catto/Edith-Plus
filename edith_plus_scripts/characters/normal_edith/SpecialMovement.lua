@@ -169,7 +169,7 @@ local function GetSafePosition(pos)
     local gridIndex = room:GetClampedGridIndex(pos)
 
     if room:GetGridCollision(gridIndex) ~= GridCollisionClass.COLLISION_NONE then
-        local emptyGridPosition = room:FindFreePickupSpawnPosition(pos, 0, false, false)
+        local emptyGridPosition = room:FindFreeTilePosition(pos, 0)
         return emptyGridPosition
     end
 
