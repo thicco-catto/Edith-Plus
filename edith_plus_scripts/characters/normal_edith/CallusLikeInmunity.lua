@@ -12,7 +12,8 @@ function CallusLikeInmunity:OnPlayerDamage(tookDamage, _, flags)
     if player:GetPlayerType() ~= Constants.NORMAL_EDITH_PLAYER then return end
 
     if (flags & DamageFlag.DAMAGE_ACID == DamageFlag.DAMAGE_ACID or
-    flags & DamageFlag.DAMAGE_SPIKES == DamageFlag.DAMAGE_SPIKES) and
+    flags & DamageFlag.DAMAGE_SPIKES == DamageFlag.DAMAGE_SPIKES or
+    flags & DamageFlag.DAMAGE_CURSED_DOOR == DamageFlag.DAMAGE_CURSED_DOOR) and
     flags & DamageFlag.DAMAGE_NO_MODIFIERS ~= DamageFlag.DAMAGE_NO_MODIFIERS then
         return false
     end

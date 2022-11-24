@@ -189,7 +189,8 @@ local function postPlayerInitLate(player)
 
     --Pocket active item
     if player:GetPlayerType() == Constants.NORMAL_EDITH_PLAYER then
-        player:SetPocketActiveItem(Constants.SALT_SHAKER_ITEM, ActiveSlot.SLOT_POCKET, false)
+        player:AddCollectible(Constants.SALT_SHAKER_ITEM, 3)
+        player:AddCollectible(Constants.EDITHS_CURSE_ITEM)
     end
 end
 
