@@ -33,11 +33,10 @@ function SaltCurse:OnPlayerDamage(entity, _, flags, source)
 
     enemy = enemy:ToNPC()
 
-    local chance = Constants.SALT_CURSE_CHANCE
+    local chance = Constants.SALT_CURSE_INCREASED_CHANCE
 
-    if player:GetSoulHearts() <= 4 then
-        chance = Constants.SALT_CURSE_INCREASED_CHANCE
-    end
+    local heartContainers = math.ceil(player:GetSoulHearts() / 2)
+    chance = chance - 10 * math.max(0, heartContainers - 2)
 
     if enemy:GetDropRNG():RandomInt(100) < chance then
         local newColor = Color(1, 1, 1, 1, 0.8, 0.5, 0.5)

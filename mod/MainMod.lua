@@ -299,7 +299,6 @@ loadFile("edith_plus_scripts/characters/normal_edith/CallusLikeInmunity", {mod, 
 loadFile("edith_plus_scripts/characters/normal_edith/DoubleCreepDamage", {mod, Constants})
 loadFile("edith_plus_scripts/characters/normal_edith/HigherChanceSodomGomorrahFirstDeal", {mod, Constants})
 loadFile("edith_plus_scripts/characters/normal_edith/BiggerTearSize", {mod, Constants})
-loadFile("edith_plus_scripts/characters/normal_edith/SaltCurse", {mod, Constants})
 
 --Items
 loadFile("edith_plus_scripts/items/actives/SaltShaker", {mod, Constants})
@@ -308,6 +307,7 @@ loadFile("edith_plus_scripts/items/actives/LotsCup", {mod, Constants})
 loadFile("edith_plus_scripts/items/passives/SodomsRain", {mod, Constants})
 loadFile("edith_plus_scripts/items/passives/SaltBabyItem", {mod, Constants})
 loadFile("edith_plus_scripts/items/passives/EdithsScarf", {mod, Constants})
+loadFile("edith_plus_scripts/items/passives/SaltCurse", {mod, Constants})
 
 --Familiars
 loadFile("edith_plus_scripts/familiars/SmallMeteorite", {mod, Constants})

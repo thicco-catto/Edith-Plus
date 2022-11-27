@@ -50,6 +50,8 @@ local function CanPlayerTeleport(player)
 end
 
 
+---@param player EntityPlayer
+---@param targetPos Vector
 local function TryTransitionThroughDoor(player, targetPos)
     if not CanPlayerTeleport(player) then return end
     if SafetyRoomTransitionTimer > 0 then return end
@@ -71,6 +73,7 @@ local function TryTransitionThroughDoor(player, targetPos)
     end
 
     if not doorToGoThrough then return end
+
     if not doorToGoThrough:IsOpen() then return end
     --If the player is too close, dont go through directly
     if doorToGoThrough.Position:Distance(player.Position) <= Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT then return end
@@ -130,11 +133,24 @@ local function TryMovePlayerThroughDoor(player, targetPos)
         posToCheckDistance = targetPos
     end
 
+    if room:GetType() == RoomType.ROOM_DUNGEON then
+        local exitPosition = room:GetGridPosition(2)
+
+        if exitPosition:Distance(posToCheckDistance) <= Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT then
+            player.Velocity = Vector(0, -7)
+        end
+
+        local blackMarketPosition = room:GetGridPosition(74)
+
+        if blackMarketPosition:Distance(posToCheckDistance) <= Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT then
+            player.Velocity = Vector(7, 0)
+        end
+    end
+
     for slot = 0, DoorSlot.NUM_DOOR_SLOTS - 1, 1 do
         ---@cast slot DoorSlot
         local door = room:GetDoor(slot)
 
-        --Empty door slots return nil
         if door then
             if door.Position:Distance(posToCheckDistance) <= Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT then
                 doorToInteract = door
@@ -143,6 +159,26 @@ local function TryMovePlayerThroughDoor(player, targetPos)
     end
 
     if not doorToInteract then return end
+
+    if doorToInteract:GetSprite():GetFilename() == "gfx/grid/door_downpour_mirror.anm2" then
+        if player:GetEffects():HasNullEffect(NullItemID.ID_LOST_CURSE) then
+            local pushDirection
+
+            if doorToInteract.Slot == DoorSlot.RIGHT0 then
+                pushDirection = Vector(1, 0)
+            elseif doorToInteract.Slot == DoorSlot.LEFT0 then
+                pushDirection = Vector(-1, 0)
+            elseif doorToInteract.Slot == DoorSlot.UP0 then
+                pushDirection = Vector(0, -1)
+            elseif doorToInteract.Slot == DoorSlot.DOWN0 then
+                pushDirection = Vector(0, 1)
+            end
+
+            player.Velocity = pushDirection * 5
+        end
+
+        return
+    end
 
     if doorToInteract:IsLocked() then
         doorToInteract:TryUnlock(player, false)
@@ -205,7 +241,7 @@ local function HandleEdithTeleport(player)
         if not sprite:IsPlaying("TeleportDown") then
             --When the player has finished the teleport down animation or is playing another one
             --Finish the teleport and try to find a door to interact with
-            TryMovePlayerThroughDoor(player)
+            TryMovePlayerThroughDoor(player, _, true)
 
             data.EdithIsTeleporting = false
             player.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
@@ -291,6 +327,11 @@ function SpecialMovement:OnTargetUpdate(target)
     --Get the inputs
     local baseXVelocity = Input.GetActionValue(ButtonAction.ACTION_RIGHT, controllerIndex) - Input.GetActionValue(ButtonAction.ACTION_LEFT, controllerIndex)
     local baseYVelocity = Input.GetActionValue(ButtonAction.ACTION_DOWN, controllerIndex) - Input.GetActionValue(ButtonAction.ACTION_UP, controllerIndex)
+
+    local room = Game():GetRoom()
+    if room:IsMirrorWorld() then
+        baseXVelocity = -baseXVelocity
+    end
 
     --Do this so if on controller and moving slightly, we dont normalize to length 1 vector
     local normalizeTarget = math.max(math.abs(baseXVelocity), math.abs(baseYVelocity))
