@@ -61,7 +61,7 @@ Constants.TARGET_BASE_SPEED = 30
 Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT = 30
 Constants.MAX_SAFETY_ROOM_TRANSITION_TIMER = 20
 Constants.MAX_FRAMES_TO_TP = 2
-Constants.MINI_MAGNETO_RADIUS = 35
+Constants.MINI_MAGNETO_RADIUS = 45
 Constants.MINI_MAGNETO_PICKUP_WHITELIST = {
 	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_BONE},
     {Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_BLENDED},
@@ -74,10 +74,7 @@ Constants.MINI_MAGNETO_PICKUP_WHITELIST = {
 	{Variant = PickupVariant.PICKUP_BOMB, SubType = -1},
 	{Variant = PickupVariant.PICKUP_POOP, SubType = -1},
 	{Variant = PickupVariant.PICKUP_GRAB_BAG, SubType = -1},
-	{Variant = PickupVariant.PICKUP_PILL, SubType = -1},
 	{Variant = PickupVariant.PICKUP_LIL_BATTERY, SubType = -1},
-	{Variant = PickupVariant.PICKUP_TAROTCARD, SubType = -1},
-	{Variant = PickupVariant.PICKUP_TRINKET, SubType = -1},
 }
 Constants.MINI_MAGNETO_PICKUP_SPEED = 3
 Constants.MINI_MAGENTO_PICKUP_ACCEL = 0.5
@@ -187,7 +184,7 @@ Constants.EDITHS_SCARF_STAT_MULTIPLIER = 0.5
 
 --Edith's Curse stuff
 Constants.SALT_CURSE_CHANCE = 10
-Constants.SALT_CURSE_INCREASED_CHANCE = 50
-Constants.SALT_CURSE_SOUL_HEART_CHANCE = 50
+Constants.SALT_CURSE_NO_SOUL_HEART_CHANCE = 25
+Constants.SALT_CURSE_DOUBLE_SOUL_HEART_CHANCE = 25
 
 return Constants

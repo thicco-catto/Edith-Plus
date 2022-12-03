@@ -61,8 +61,13 @@ function SaltCurse:OnEntityDamage(entity, _, flags)
 
     local rng = entity:GetDropRNG()
 
-    if rng:RandomInt(100) < Constants.SALT_CURSE_SOUL_HEART_CHANCE then
-        for _ = 1, rng:RandomInt(2)+1, 1 do
+    if rng:RandomInt(100) >= Constants.SALT_CURSE_NO_SOUL_HEART_CHANCE then
+        local numHearts = 1
+        if rng:RandomInt(100) < Constants.SALT_CURSE_DOUBLE_SOUL_HEART_CHANCE then
+            numHearts = 2
+        end
+
+        for _ = 1, numHearts, 1 do
             local velocity = Vector(rng:RandomFloat() * 8 + 4, 0):Rotated(rng:RandomInt(360))
             Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_HEART, HeartSubType.HEART_SOUL, entity.Position, velocity, nil)
         end

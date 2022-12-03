@@ -241,7 +241,7 @@ local function HandleEdithTeleport(player)
         if not sprite:IsPlaying("TeleportDown") then
             --When the player has finished the teleport down animation or is playing another one
             --Finish the teleport and try to find a door to interact with
-            TryMovePlayerThroughDoor(player, _, true)
+            TryMovePlayerThroughDoor(player, _)
 
             data.EdithIsTeleporting = false
             player.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
@@ -338,6 +338,7 @@ function SpecialMovement:OnTargetUpdate(target)
 
     --Normalize the vector so it doesnt move faster on diagonals
     local baseVelocity = Vector(baseXVelocity, baseYVelocity)
+    ---@diagnostic disable-next-line: cast-local-type
     baseVelocity = baseVelocity:Normalized() * normalizeTarget
 
     target.Velocity = baseVelocity * Constants.TARGET_BASE_SPEED * player.MoveSpeed
