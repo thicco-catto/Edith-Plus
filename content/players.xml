@@ -1,5 +1,5 @@
 <players nameimageroot="gfx/ui/boss/" portraitroot="gfx/ui/" root="gfx/characters/costumes/">
-  <player armor="6" name="EdithPlus" 
+  <player armor="6" keys="1" name="EdithPlus" 
   nameimage="edith_plus_name.png" 
   portrait="empty.png" 
   extraportrait="edith_plus_portrait.anm2"

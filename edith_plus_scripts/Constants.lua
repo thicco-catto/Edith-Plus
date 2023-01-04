@@ -9,6 +9,7 @@ Constants.SODOMS_RAIN_ITEM = Isaac.GetItemIdByName("Sodom's Rain")
 Constants.SALT_BABY_ITEM = Isaac.GetItemIdByName("Salt Baby")
 Constants.LOTS_CUP_ITEM = Isaac.GetItemIdByName("Lot's Cup")
 Constants.EDITHS_SCARF_ITEM = Isaac.GetItemIdByName("Edith's Scarf")
+Constants.EDITHS_CURSE_ITEM = Isaac.GetItemIdByName("Edith's Curse")
 
 Constants.SMALL_METEORITE_FAMILIAR = Isaac.GetEntityVariantByName("small rain meteorite")
 Constants.BIG_METEORITE_FAMILIAR = Isaac.GetEntityVariantByName("big rain meteorite")
@@ -57,11 +58,12 @@ Constants.CompletionMark = {
 Constants.MINIMUM_TRAVEL_DISTANCE = 10
 Constants.TARGET_SPRITE_PLAYBACK_SPEED = 0.8
 Constants.TARGET_BASE_SPEED = 30
-Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT = 40
+Constants.MAX_DISTANCE_TO_DOOR_TO_INTERACT = 30
 Constants.MAX_SAFETY_ROOM_TRANSITION_TIMER = 20
 Constants.MAX_FRAMES_TO_TP = 2
-Constants.MINI_MAGNETO_RADIUS = 35
+Constants.MINI_MAGNETO_RADIUS = 45
 Constants.MINI_MAGNETO_PICKUP_WHITELIST = {
+	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_BONE},
     {Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_BLENDED},
 	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_SOUL},
 	{Variant = PickupVariant.PICKUP_HEART, SubType = HeartSubType.HEART_ETERNAL},
@@ -72,10 +74,7 @@ Constants.MINI_MAGNETO_PICKUP_WHITELIST = {
 	{Variant = PickupVariant.PICKUP_BOMB, SubType = -1},
 	{Variant = PickupVariant.PICKUP_POOP, SubType = -1},
 	{Variant = PickupVariant.PICKUP_GRAB_BAG, SubType = -1},
-	{Variant = PickupVariant.PICKUP_PILL, SubType = -1},
 	{Variant = PickupVariant.PICKUP_LIL_BATTERY, SubType = -1},
-	{Variant = PickupVariant.PICKUP_TAROTCARD, SubType = -1},
-	{Variant = PickupVariant.PICKUP_TRINKET, SubType = -1},
 }
 Constants.MINI_MAGNETO_PICKUP_SPEED = 3
 Constants.MINI_MAGENTO_PICKUP_ACCEL = 0.5
@@ -183,5 +182,9 @@ Constants.EDITHS_SCARF_SHOTSPEED = 0.2
 Constants.EDITHS_SCARF_LUCK = -1
 Constants.EDITHS_SCARF_STAT_MULTIPLIER = 0.5
 
+--Edith's Curse stuff
+Constants.SALT_CURSE_CHANCE = 10
+Constants.SALT_CURSE_NO_SOUL_HEART_CHANCE = 25
+Constants.SALT_CURSE_DOUBLE_SOUL_HEART_CHANCE = 25
 
 return Constants

@@ -84,11 +84,11 @@ EdithPlus:AddCostume("edith_hoodie")
 
 -- next we need to setup our players stats
 local NormalStats = Characters.newStatTable() -- create a new stat table
-NormalStats.Damage = 3.75
-NormalStats.Firedelay = 3.85
-NormalStats.Shotspeed = 1.00
-NormalStats.Range = 6.50
-NormalStats.Speed = 1.00
+NormalStats.Damage = 3.5
+NormalStats.Firedelay = 4
+NormalStats.Shotspeed = 1.15
+NormalStats.Range = 11.00
+NormalStats.Speed = 1.5
 NormalStats.Tearflags = TearFlags.TEAR_NORMAL
 NormalStats.Tearcolor = Color(1.0, 1.0, 1.0, 1.0, 0, 0, 0) -- Color, first four arguments between 0 and 1
 NormalStats.Flying = false

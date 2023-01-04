@@ -9,6 +9,13 @@ local Constants = loadFile("edith_plus_scripts/Constants")
 mod = RegisterMod(modName, 1)
 --SaveData by KingBobson
 loadFile("edith_plus_scripts/SaveData")(mod)
+
+if not mod.Persistent.Unlocks then
+    mod.Persistent.Unlocks = {
+        EDITH = {}
+    }
+end
+
 -- CODE --
 local config = Isaac.GetItemConfig()
 local game = Game()
@@ -182,7 +189,8 @@ local function postPlayerInitLate(player)
 
     --Pocket active item
     if player:GetPlayerType() == Constants.NORMAL_EDITH_PLAYER then
-        player:SetPocketActiveItem(Constants.SALT_SHAKER_ITEM, ActiveSlot.SLOT_POCKET, false)
+        player:AddCollectible(Constants.SALT_SHAKER_ITEM, 3)
+        player:AddCollectible(Constants.EDITHS_CURSE_ITEM)
     end
 end
 
@@ -299,9 +307,26 @@ loadFile("edith_plus_scripts/items/actives/LotsCup", {mod, Constants})
 loadFile("edith_plus_scripts/items/passives/SodomsRain", {mod, Constants})
 loadFile("edith_plus_scripts/items/passives/SaltBabyItem", {mod, Constants})
 loadFile("edith_plus_scripts/items/passives/EdithsScarf", {mod, Constants})
+loadFile("edith_plus_scripts/items/passives/SaltCurse", {mod, Constants})
 
 --Familiars
 loadFile("edith_plus_scripts/familiars/SmallMeteorite", {mod, Constants})
 loadFile("edith_plus_scripts/familiars/SaltBabyFamiliar", {mod, Constants})
+
+
+function mod:DebugCommand(cmd, args)
+    if cmd == "edithunlock" then
+        args = string.upper(args)
+        local prevState = mod.Persistent.Unlocks.EDITH[args]
+        if prevState and prevState == 2 then
+            print("Locking " .. args)
+            mod.Persistent.Unlocks.EDITH[args] = 0
+        else
+            print("Unlocking " .. args)
+            mod.Persistent.Unlocks.EDITH[args] = 2
+        end
+    end
+end
+mod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, mod.DebugCommand)
 
 ::EndOfFile::
