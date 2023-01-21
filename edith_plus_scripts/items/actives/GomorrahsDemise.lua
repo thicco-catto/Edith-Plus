@@ -1,4 +1,4 @@
-local EdithPlusMod, Constants = table.unpack(...)
+local Constants = require("edith_plus_scripts.Constants")
 local GomorrahsDemise = {}
 local game = Game()
 

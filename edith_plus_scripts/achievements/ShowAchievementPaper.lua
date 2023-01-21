@@ -1,4 +1,4 @@
-local EdithPlusMod, Constants = table.unpack(...)
+local Constants = require("edith_plus_scripts.Constants")
 local ShowAchievementPaper = {}
 local game = Game()
 
@@ -16,8 +16,6 @@ end
 
 function ShowAchievementPaper:OnRender()
     if not EdithPlusMod.Data.IsPlayingAchievementAnimation then return end
-
-    --achievementPaperSprite:Play("Idle")
 
     local centerScreenPos = Vector(
         Isaac.GetScreenWidth() / 2,

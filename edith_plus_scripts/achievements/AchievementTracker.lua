@@ -1,13 +1,15 @@
-local EdithPlusMod, Constants, ShowAchievementPaper = table.unpack(...)
+local Constants = require("edith_plus_scripts.Constants")
+local ShowAchievementPaper = require("edith_plus_scripts.achievements.ShowAchievementPaper")
 local AchievementTracker = {}
 local game = Game()
 
 local ModUnlocks
 
--------------------------
---Most of this code has been translated from JSG's Completion Marks for modded characters
+-------------------------------------------------------------------
+--Most of this code has been translated 
+--from JSG's Completion Marks for modded characters
 --https://steamcommunity.com/sharedfiles/filedetails/?id=2503022727
--------------------------
+-------------------------------------------------------------------
 
 local function InitializeUnlocksTable()
     if not EdithPlusMod.Persistent.Unlocks then

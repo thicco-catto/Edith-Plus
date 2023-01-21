@@ -1,5 +1,5 @@
 ---@diagnostic disable: assign-type-mismatch
-local EdithPlusMod, Constants = table.unpack(...)
+local Constants = require("edith_plus_scripts.Constants")
 local MiniMagneto = {}
 
 

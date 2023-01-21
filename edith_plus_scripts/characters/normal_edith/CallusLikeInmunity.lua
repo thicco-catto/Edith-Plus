@@ -1,9 +1,9 @@
-local EdithPlusMod, Constants = table.unpack(...)
+local Constants = require("edith_plus_scripts.Constants")
 local CallusLikeInmunity = {}
 
 function CallusLikeInmunity:OnPlayerDamage(tookDamage, _, flags)
     --Needs to have killed the beast for this
-    local hasBeatenBeast = mod.Persistent.Unlocks.EDITH[Constants.CompletionMark.BEAST]
+    local hasBeatenBeast = EdithPlusMod.Persistent.Unlocks.EDITH[Constants.CompletionMark.BEAST]
     if not hasBeatenBeast then hasBeatenBeast = 0 end
     if hasBeatenBeast == 0 then return end
 

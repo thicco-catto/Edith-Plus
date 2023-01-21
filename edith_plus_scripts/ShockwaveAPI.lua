@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------------------------------------------
 --Taken from Stone Bombs https://steamcommunity.com/sharedfiles/filedetails/?id=2585716114&searchtext=stone+bombs
---Slightly modified so it doesnt create global functions (ew) and some other fixes
+--Slightly modified so it doesnt create global functions and some other fixes
 --
 --Originally by KittenChilly (I think) and modified by Thicco Catto
 --------------------------------------------------------------------------------------------------------------------

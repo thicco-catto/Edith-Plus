@@ -1,4 +1,4 @@
-local EdithPlusMod, Constants = table.unpack(...)
+local Constants = require("edith_plus_scripts.Constants")
 local HigherChanceSodomGomorrahFirstDeal = {}
 local game = Game()
 
@@ -17,13 +17,13 @@ function HigherChanceSodomGomorrahFirstDeal:OnNewRoom()
     local replacements = {}
 
     --Sodom's rain unlocked by beating Blue Baby
-    local hasBeatenBlueBaby = mod.Persistent.Unlocks.EDITH[Constants.CompletionMark.BLUE_BABY]
+    local hasBeatenBlueBaby = EdithPlusMod.Persistent.Unlocks.EDITH[Constants.CompletionMark.BLUE_BABY]
     if hasBeatenBlueBaby and hasBeatenBlueBaby > 0 then
         table.insert(replacements, Constants.SODOMS_RAIN_ITEM)
     end
 
     --Gomorrah's Demise unlocked by beating The Lamb
-    local hasBeatenLamb = mod.Persistent.Unlocks.EDITH[Constants.CompletionMark.LAMB]
+    local hasBeatenLamb = EdithPlusMod.Persistent.Unlocks.EDITH[Constants.CompletionMark.LAMB]
     if hasBeatenLamb and hasBeatenLamb > 0 then
         table.insert(replacements, Constants.GOMORRAHS_DEMISE_ITEM)
     end

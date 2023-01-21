@@ -1,64 +1,60 @@
--- vars
-local useCustomErrorChecker = true -- should the custom error checker be used?
+EdithPlusMod = RegisterMod("Edith Plus Mod", 1)
 
--- file loc
-local _, _err = pcall(require, "")
----@type string
-local modName = _err:match("/mods/(.*)/%.lua")
----@type string
-local path = "mods/" .. modName .. "/"
 
----loads a file, with no cache
----@param loc string
----@param ... any
----@return any
-local function loadFile(loc, ...)
-    return assert(loadfile(path .. loc .. ".lua","bt",_ENV))(...)
-end
+--Save data
+require("edith_plus_scripts.SaveData")(EdithPlusMod)
 
-local _, ogerr = pcall(function()
-    ---@type AllCharacters
-    local stats = loadFile("mod/stats")
-    loadFile("mod/MainMod", { modName, path, loadFile, stats, useCustomErrorChecker })
-end)
 
-if (ogerr) then
-    if (useCustomErrorChecker) then
-        local errorChecker = require("lib.cerror")
-        errorChecker.registerError()
+--Achivements
+require("edith_plus_scripts.achievements.pause_screen_completion_marks_api")
+require("edith_plus_scripts.achievements.CompletionMarks")
+require("edith_plus_scripts.achievements.ShowAchievementPaper")
+require("edith_plus_scripts.achievements.AchievementTracker")
+require("edith_plus_scripts.achievements.LockedItemBlocker")
 
-        local str = errorChecker.formatError(ogerr)
 
-        if (str) then
-            local file = str:match("%w+%.lua")
-            local line = str:match(":(%d+):")
-            local err = str:match(":%d+: (.*)")
-            errorChecker.SetData({
-                Mod = modName,
-                File = file,
-                Line = line
-            })
-            errorChecker.add("Error:", err, true)
-            errorChecker.add("For full error report, open log.txt",true)
-            errorChecker.add("Log Root: C:\\Users\\<YOUR USER>\\Documents\\My Games\\Binding of Isaac Repentance\\log.txt",true)
-            errorChecker.add("Restart your game after fixing the error!")
+--Regular Edith
+require("edith_plus_scripts.characters.normal_edith.Stats")
+require("edith_plus_scripts.characters.normal_edith.InitialItems")
+require("edith_plus_scripts.characters.normal_edith.BiggerTearSize")
+require("edith_plus_scripts.characters.normal_edith.CallusLikeInmunity")
+require("edith_plus_scripts.characters.normal_edith.DoubleCreepDamage")
+require("edith_plus_scripts.characters.normal_edith.HigherChanceSodomGomorrahFirstDeal")
+require("edith_plus_scripts.characters.normal_edith.InvisibleAnalogStick")
+require("edith_plus_scripts.characters.normal_edith.MiniMagneto")
+require("edith_plus_scripts.characters.normal_edith.OnlySoulHearts")
+require("edith_plus_scripts.characters.normal_edith.SpecialMovement")
+
+
+--Familiars
+require("edith_plus_scripts.familiars.SaltBabyFamiliar")
+require("edith_plus_scripts.familiars.SmallMeteorite")
+
+
+--Active items
+require("edith_plus_scripts.items.actives.GomorrahsDemise")
+require("edith_plus_scripts.items.actives.LotsCup")
+require("edith_plus_scripts.items.actives.SaltShaker")
+
+
+--Passive items
+require("edith_plus_scripts.items.passives.EdithsScarf")
+require("edith_plus_scripts.items.passives.SaltBabyItem")
+require("edith_plus_scripts.items.passives.SaltCurse")
+require("edith_plus_scripts.items.passives.SodomsRain")
+
+
+function EdithPlusMod:DebugCommand(cmd, args)
+    if cmd == "edithunlock" then
+        args = string.upper(args)
+        local prevState = EdithPlusMod.Persistent.Unlocks.EDITH[args]
+        if prevState and prevState == 2 then
+            print("Locking " .. args)
+            EdithPlusMod.Persistent.Unlocks.EDITH[args] = 0
         else
-            errorChecker.add("Unexpected error occured, please open log.txt!")
-            errorChecker.add("Log Root: C:\\Users\\<YOUR USER>\\Documents\\My Games\\Binding of Isaac Repentance\\log.txt",true)
-            errorChecker.add(ogerr)
+            print("Unlocking " .. args)
+            EdithPlusMod.Persistent.Unlocks.EDITH[args] = 2
         end
-
-        local room = Game():GetRoom()
-        for i = 0, 7 do room:RemoveDoor(i) end
-
-        errorChecker.dump(ogerr)
-        error()
-    else
-        Isaac.ConsoleOutput(modName .. " has hit an error, see Log.txt for more info\n")
-        Isaac.ConsoleOutput("Log Root: C:\\Users\\<YOUR USER>\\Documents\\My Games\\Binding of Isaac Repentance\\log.txt")
-        Isaac.DebugString("-- START OF " .. modName:upper() .. " ERROR --")
-        Isaac.DebugString(ogerr)
-        Isaac.DebugString("-- END OF " .. modName:upper() .. " ERROR --")
-        error()
     end
 end
+EdithPlusMod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, EdithPlusMod.DebugCommand)

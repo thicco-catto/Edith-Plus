@@ -1,4 +1,5 @@
-local EdithPlusMod, Constants, ShockwaveAPI = table.unpack(...)
+local Constants = require("edith_plus_scripts.Constants")
+local ShockwaveAPI = require("edith_plus_scripts.ShockwaveAPI")
 local SpecialMovement = {}
 local game = Game()
 

@@ -1,4 +1,4 @@
-local EdithPlusMod, Constants = table.unpack(...)
+local Constants = require("edith_plus_scripts.Constants")
 local DoubleCreepDamage = {}
 
 
@@ -19,7 +19,7 @@ end
 ---@param source EntityRef
 function DoubleCreepDamage:OnEntityDamage(tookDamage, amount, flags, source, damageCountdown)
     --Needs to have killed megasatan for this
-    local hasBeatenMegaSatan = mod.Persistent.Unlocks.EDITH[Constants.CompletionMark.MEGASATAN]
+    local hasBeatenMegaSatan = EdithPlusMod.Persistent.Unlocks.EDITH[Constants.CompletionMark.MEGASATAN]
     if not hasBeatenMegaSatan then hasBeatenMegaSatan = 0 end
     if hasBeatenMegaSatan == 0 then return end
 
