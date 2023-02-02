@@ -9,6 +9,8 @@
     <active id="5" name="Gomorrah's Demise" description="Appopalypse" gfx="gomorrahs_demise.png" maxcharges="0"/>
     <active id="6" name="Lot's Cup" description="Fill it" gfx="lots_cup.png" maxcharges="0" initcharge="0" chargetype="special"/>
 
+    <active id="6" name="Standstill" description="Take a moment" gfx="standstill.png" maxcharges="0" chargetype="special"/>
+
     <!--Lot's cup helpers-->
     <active id="6" name="Lot's Cup 1" description="Fill it" gfx="lots_cup1.png" maxcharges="0" chargetype="special" hidden="true"/>
     <active id="6" name="Lot's Cup 2" description="Fill it" gfx="lots_cup2.png" maxcharges="0" chargetype="special" hidden="true"/>

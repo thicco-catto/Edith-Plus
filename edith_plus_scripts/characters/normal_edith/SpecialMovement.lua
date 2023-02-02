@@ -10,7 +10,6 @@ local SafetyRoomTransitionTimer = 0
 ---@param inputHook InputHook
 ---@param buttonAction ButtonAction
 function SpecialMovement:OnInput(entity, inputHook, buttonAction)
-    --Only if the collider is a player
     if not entity or not entity:ToPlayer() then return end
     local player = entity:ToPlayer()
 

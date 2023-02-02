@@ -2,8 +2,10 @@ local Constants = {}
 
 --Enums
 Constants.NORMAL_EDITH_PLAYER = Isaac.GetPlayerTypeByName("EdithPlus")
+Constants.TAINTED_EDITH_PLAYER = Isaac.GetPlayerTypeByName("EdithPlus", true)
 
 Constants.SALT_SHAKER_ITEM = Isaac.GetItemIdByName("Salt Shaker")
+Constants.STANDSTILL_ITEM = Isaac.GetItemIdByName("Standstill")
 Constants.GOMORRAHS_DEMISE_ITEM = Isaac.GetItemIdByName("Gomorrah's Demise")
 Constants.SODOMS_RAIN_ITEM = Isaac.GetItemIdByName("Sodom's Rain")
 Constants.SALT_BABY_ITEM = Isaac.GetItemIdByName("Salt Baby")
@@ -113,6 +115,9 @@ Constants.DEVIL_ENEMIES = {
 Constants.CHANCE_REPLACE_FIRST_DEAL_1 = 50
 Constants.CHANCE_REPLACE_FIRST_DEAL_2 = 25
 Constants.EDITH_TEAR_SCALE = 0.2
+
+--For tainted Edith
+Constants.BASE_TAINTED_SPEED = 5
 
 --Salt shaker stuff
 Constants.SALT_CREEP_SCALE = 1

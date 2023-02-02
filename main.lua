@@ -13,6 +13,10 @@ require("edith_plus_scripts.achievements.AchievementTracker")
 require("edith_plus_scripts.achievements.LockedItemBlocker")
 
 
+--Common for both ediths
+require("edith_plus_scripts.characters.MiniMagneto")
+
+
 --Regular Edith
 require("edith_plus_scripts.characters.normal_edith.Stats")
 require("edith_plus_scripts.characters.normal_edith.InitialItems")
@@ -21,9 +25,16 @@ require("edith_plus_scripts.characters.normal_edith.CallusLikeInmunity")
 require("edith_plus_scripts.characters.normal_edith.DoubleCreepDamage")
 require("edith_plus_scripts.characters.normal_edith.HigherChanceSodomGomorrahFirstDeal")
 require("edith_plus_scripts.characters.normal_edith.InvisibleAnalogStick")
-require("edith_plus_scripts.characters.normal_edith.MiniMagneto")
 require("edith_plus_scripts.characters.normal_edith.OnlySoulHearts")
 require("edith_plus_scripts.characters.normal_edith.SpecialMovement")
+
+
+--Tainted Edith
+require("edith_plus_scripts.characters.tainted_edith.FireballTears")
+require("edith_plus_scripts.characters.tainted_edith.InitialItems")
+require("edith_plus_scripts.characters.tainted_edith.OnlyBlackHearts")
+require("edith_plus_scripts.characters.tainted_edith.SpecialMovement")
+require("edith_plus_scripts.characters.tainted_edith.Stats")
 
 
 --Familiars
