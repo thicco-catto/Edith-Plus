@@ -35,6 +35,7 @@ require("edith_plus_scripts.characters.tainted_edith.InitialItems")
 require("edith_plus_scripts.characters.tainted_edith.OnlyBlackHearts")
 require("edith_plus_scripts.characters.tainted_edith.SpecialMovement")
 require("edith_plus_scripts.characters.tainted_edith.Stats")
+require("edith_plus_scripts.characters.tainted_edith.SulphuricBlood")
 
 
 --Familiars

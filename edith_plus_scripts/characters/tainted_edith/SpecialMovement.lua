@@ -58,6 +58,8 @@ local function ForceMovePlayer(player, playerMovingData)
     player.Velocity = playerMovingData.movingDirection * Constants.BASE_TAINTED_SPEED * player.MoveSpeed
 
     if player:CollidesWithGrid() then
+        Game():ShakeScreen(6)
+        player.Velocity = player.Velocity/7
         playerMovingData.movingDirection = nil
     end
 end
@@ -66,13 +68,16 @@ end
 ---@param player EntityPlayer
 ---@param playerMovingData PlayerMovingData
 local function CheckForPlayerMovementInput(player, playerMovingData)
-    local movementDir = player:GetMovementDirection()
+    local room = Game():GetRoom()
+    if room:GetFrameCount() < 2 then return end
 
-    if movementDir == Direction.NO_DIRECTION then return end
+    local movementDir = player:GetMovementInput()
 
-    local movement = Constants.DIRECTION_TO_VECTOR[movementDir]
-    playerMovingData.movingDirection = movement
-    player.Velocity = movement * Constants.BASE_TAINTED_SPEED * player.MoveSpeed
+    --Random threshold
+    if movementDir:LengthSquared() < 0.01 then return end
+
+    playerMovingData.movingDirection = movementDir:Normalized()
+    player.Velocity = movementDir:Normalized() * Constants.BASE_TAINTED_SPEED * player.MoveSpeed
 end
 
 

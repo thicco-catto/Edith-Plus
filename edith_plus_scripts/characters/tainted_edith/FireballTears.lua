@@ -12,6 +12,9 @@ function FireballTears:OnTearInitLate(tear)
 
     if player:GetPlayerType() ~= Constants.TAINTED_EDITH_PLAYER then return end
 
+    local data = tear:GetData()
+    if data.EdithSulphuricBloodTear then return end
+
     tear:ChangeVariant(TearVariant.FIRE_MIND)
 end
 EdithPlusMod:AddCallback(ModCallbacks.MC_POST_TEAR_UPDATE, FireballTears.OnTearInitLate)
