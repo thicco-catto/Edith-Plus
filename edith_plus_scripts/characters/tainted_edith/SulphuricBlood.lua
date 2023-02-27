@@ -61,3 +61,28 @@ function SulphuricBlood:OnTearUpdate(tear)
     tear.Velocity = tear.Velocity:Rotated(rotation)
 end
 EdithPlusMod:AddCallback(ModCallbacks.MC_POST_TEAR_UPDATE, SulphuricBlood.OnTearUpdate)
+
+
+---@param entity Entity
+function SulphuricBlood:OnTearRemove(entity)
+    local tear = entity:ToTear()
+
+    local data = tear:GetData()
+    if not data.EdithSulphuricBloodTear then return end
+
+    local creep = Isaac.Spawn(
+        EntityType.ENTITY_EFFECT,
+        EffectVariant.PLAYER_CREEP_RED,
+        0,
+        tear.Position,
+        Vector.Zero,
+        tear.SpawnerEntity
+    ):ToEffect()
+
+    creep.Timeout = Constants.SULFURIC_CREEP_DURATION
+
+    local newColor = Color(50, 50, 50)
+    newColor:SetColorize(0.5, 0.5, 0, 1)
+    creep.Color = newColor
+end
+EdithPlusMod:AddCallback(ModCallbacks.MC_POST_ENTITY_REMOVE, SulphuricBlood.OnTearRemove, EntityType.ENTITY_TEAR)

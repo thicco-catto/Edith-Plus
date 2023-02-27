@@ -3,6 +3,7 @@ local Constants = require("edith_plus_scripts.Constants")
 
 ---@class PlayerMovingData
 ---@field movingDirection Vector?
+---@field prevPosition Vector?
 
 local PlayersMovingData = {}
 
@@ -62,6 +63,13 @@ local function ForceMovePlayer(player, playerMovingData)
         player.Velocity = player.Velocity/7
         playerMovingData.movingDirection = nil
     end
+
+    if player.Position:Distance(playerMovingData.prevPosition) < 2 then
+        playerMovingData.movingDirection = nil
+        return
+    end
+
+    playerMovingData.prevPosition = player.Position
 end
 
 
@@ -77,6 +85,7 @@ local function CheckForPlayerMovementInput(player, playerMovingData)
     if movementDir:LengthSquared() < 0.01 then return end
 
     playerMovingData.movingDirection = movementDir:Normalized()
+    playerMovingData.prevPosition = player.Position
     player.Velocity = movementDir:Normalized() * Constants.BASE_TAINTED_SPEED * player.MoveSpeed
 end
 

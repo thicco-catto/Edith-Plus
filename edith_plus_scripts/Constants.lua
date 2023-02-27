@@ -118,6 +118,7 @@ Constants.EDITH_TEAR_SCALE = 0.2
 
 --For tainted Edith
 Constants.BASE_TAINTED_SPEED = 5
+Constants.SULFURIC_CREEP_DURATION = 45
 
 --Salt shaker stuff
 Constants.SALT_CREEP_SCALE = 1
