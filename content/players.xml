@@ -3,7 +3,7 @@
   nameimage="edith_plus_name.png" 
   portrait="empty.png" 
   extraportrait="edith_plus_portrait.anm2"
-  skin="edith_plus.png" skinColor="-1"/>
+  skin="edith_plus.png" skinColor="-1" costumeSuffix="edith"/>
   
   <player black="8" name="EdithPlus"
   nameimage="edithb_plus_name.png"

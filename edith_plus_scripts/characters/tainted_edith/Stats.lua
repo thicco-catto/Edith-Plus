@@ -1,7 +1,6 @@
 local Stats = {}
 local Constants = require("edith_plus_scripts.Constants")
 
-
 ---@param player EntityPlayer
 ---@param cache CacheFlag
 function Stats:OnCache(player, cache)
