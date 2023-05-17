@@ -13,28 +13,28 @@ local function IsEntityADemon(entity)
 end
 
 
+local avoidRecursion = false
+
+
 ---@param tookDamage Entity 
 ---@param amount number
 ---@param flags DamageFlag
 ---@param source EntityRef
 function DoubleCreepDamage:OnEntityDamage(tookDamage, amount, flags, source, damageCountdown)
-    --Needs to have killed megasatan for this
-    local hasBeatenMegaSatan = EdithPlusMod.Persistent.Unlocks.EDITH[Constants.CompletionMark.MEGASATAN]
-    if not hasBeatenMegaSatan then hasBeatenMegaSatan = 0 end
-    if hasBeatenMegaSatan == 0 then return end
+    if avoidRecursion then return end
 
     local isDemon = IsEntityADemon(tookDamage)
 
     if not isDemon then return end
 
     if flags & DamageFlag.DAMAGE_ACID ~= DamageFlag.DAMAGE_ACID or  --Only care if its creep damage
-    not source.Entity:GetData().IsEdithSaltCreep or                 --Only care if it has been done by our salt creep
-    flags & DamageFlag.DAMAGE_TIMER == DamageFlag.DAMAGE_TIMER then --We use timer as a special flag as to not cause loops
+    not source.Entity:GetData().IsEdithSaltCreep then               --Only care if it has been done by our salt creep
         return
     end
 
-    --Add the timer damage flag so we can check for it later and avoid loops
-    tookDamage:TakeDamage(amount * 2, flags | DamageFlag.DAMAGE_TIMER, source, damageCountdown)
+    avoidRecursion = true
+    tookDamage:TakeDamage(amount * 2, flags, source, damageCountdown)
+    avoidRecursion = false
 
     return false
 end

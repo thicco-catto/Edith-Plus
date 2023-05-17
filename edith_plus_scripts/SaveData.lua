@@ -42,6 +42,7 @@ include("save")(Mod)
 
 return function(Mod)
 
+local HiddenItemManager = require("edith_plus_scripts.HiddenItemManager")
 local json = require("json")
 local SaveDataDelayedCallback = false
 
@@ -87,6 +88,7 @@ end
 
 -- Saves current Data, Persistent, and Config to storage.
 local function SaveStorage() -- 99% sure there's no harm in ignoring shouldsave as long as you blank out the data at the start of a run
+	Mod.Data.HiddenItemManager = HiddenItemManager:GetSaveData()
 	local saving = {
 		Data = Mod.Data,
 		Config = Mod.Config,
@@ -108,6 +110,7 @@ local function LoadStorage(_,savestate)
 			-- And reload all player caches, in case the mod changed stats.
 			--Game():Update()?
 			ReloadAllCache()
+			HiddenItemManager:LoadData(Mod.Data.HiddenItemManager)
 		else
 			-- continuing an existing run right after getting the mod. Pretty bad idea, hypothetical player doing this, but it shouldn't crash maybe
 			Mod.Data = {}

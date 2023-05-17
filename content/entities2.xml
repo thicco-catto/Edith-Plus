@@ -1,5 +1,0 @@
-<entities anm2root="gfx/" version="5">
-    <entity name="small rain meteorite" anm2path="small_rain_meteorite.anm2" id="3" variant="" shadowSize="15" collisionRadius="0"/> 
-    <entity name="big rain meteorite" anm2path="big_rain_meteorite.anm2" id="3" variant="" shadowSize="25" collisionRadius="0"/>
-    <entity name="salt baby" anm2path="salt_baby.anm2" id="3" variant="" tags="cansacrifice" collisionMass="3" collisionRadius="13" friction="1" numGridCollisionPoints="12" shadowSize="11"/>
-</entities>

@@ -11,14 +11,5 @@ function OnlySoulHearts:OnPlayerUpdate(player)
         player:AddMaxHearts(-maxHearts, true)
         player:AddSoulHearts(maxHearts)
     end
-
-    -- if player:GetBoneHearts() > 0 then
-    --     --Remove bone hearts too
-    --     local boneHearts = player:GetBoneHearts()
-    --     player:AddBoneHearts(-boneHearts)
-
-    --     --For every bone heart removed, add 2 soul hearts
-    --     player:AddSoulHearts(boneHearts * 4)
-    -- end
 end
 EdithPlusMod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, OnlySoulHearts.OnPlayerUpdate)

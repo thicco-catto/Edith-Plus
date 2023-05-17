@@ -38,4 +38,3 @@ function MiniMagneto:OnPeffectUpdate(player)
     end
 end
 EdithPlusMod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, MiniMagneto.OnPeffectUpdate, Constants.NORMAL_EDITH_PLAYER)
-EdithPlusMod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, MiniMagneto.OnPeffectUpdate, Constants.TAINTED_EDITH_PLAYER)

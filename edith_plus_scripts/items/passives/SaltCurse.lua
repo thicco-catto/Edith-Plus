@@ -33,7 +33,7 @@ function SaltCurse:OnPlayerDamage(entity, _, flags, source)
 
     enemy = enemy:ToNPC()
 
-    local chance = Constants.SALT_CURSE_INCREASED_CHANCE
+    local chance = Constants.SALT_CURSE_CHANCE
 
     local heartContainers = math.ceil(player:GetSoulHearts() / 2)
     chance = chance - 10 * math.max(0, heartContainers - 2)

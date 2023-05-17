@@ -5,17 +5,8 @@ Constants.NORMAL_EDITH_PLAYER = Isaac.GetPlayerTypeByName("EdithPlus")
 Constants.TAINTED_EDITH_PLAYER = Isaac.GetPlayerTypeByName("EdithPlus", true)
 
 Constants.SALT_SHAKER_ITEM = Isaac.GetItemIdByName("Salt Shaker")
-Constants.STANDSTILL_ITEM = Isaac.GetItemIdByName("Standstill")
-Constants.GOMORRAHS_DEMISE_ITEM = Isaac.GetItemIdByName("Gomorrah's Demise")
-Constants.SODOMS_RAIN_ITEM = Isaac.GetItemIdByName("Sodom's Rain")
-Constants.SALT_BABY_ITEM = Isaac.GetItemIdByName("Salt Baby")
-Constants.LOTS_CUP_ITEM = Isaac.GetItemIdByName("Lot's Cup")
-Constants.EDITHS_SCARF_ITEM = Isaac.GetItemIdByName("Edith's Scarf")
 Constants.EDITHS_CURSE_ITEM = Isaac.GetItemIdByName("Edith's Curse")
 
-Constants.SMALL_METEORITE_FAMILIAR = Isaac.GetEntityVariantByName("small rain meteorite")
-Constants.BIG_METEORITE_FAMILIAR = Isaac.GetEntityVariantByName("big rain meteorite")
-Constants.SALT_BABY_FAMILIAR = Isaac.GetEntityVariantByName("salt baby")
 
 --Useful stuff
 Constants.FLOAT_ANIM_PER_DIRECTION = {
@@ -25,7 +16,6 @@ Constants.FLOAT_ANIM_PER_DIRECTION = {
 	[Direction.RIGHT] = "FloatRight",
 	[Direction.DOWN] = "FloatDown"
 }
-
 Constants.SHOOT_ANIM_PER_DIRECTION = {
 	[Direction.NO_DIRECTION] = "FloatDown",
 	[Direction.LEFT] = "FloatShootLeft",
@@ -33,7 +23,6 @@ Constants.SHOOT_ANIM_PER_DIRECTION = {
 	[Direction.RIGHT] = "FloatShootRight",
 	[Direction.DOWN] = "FloatShootDown"
 }
-
 Constants.DIRECTION_TO_VECTOR = {
 	[Direction.LEFT] = Vector(-1, 0),
 	[Direction.UP] = Vector(0, -1),
@@ -41,20 +30,6 @@ Constants.DIRECTION_TO_VECTOR = {
 	[Direction.DOWN] = Vector(0, 1),
 }
 
-Constants.CompletionMark = {
-    HEART = "HEART",
-    ISAAC = "ISAAC",
-    BLUE_BABY = "BLUE_BABY",
-    SATAN = "SATAN",
-    LAMB = "LAMB",
-    MEGA_SATAN = "MEGA_SATAN",
-    BOSS_RUSH = "BOSS_RUSH",
-    HUSH = "HUSH",
-    GREED = "GREED",
-    DELIRIUM = "DELIRIUM",
-    MOTHER = "MOTHER",
-    BEAST = "BEAST"
-}
 
 --For normal Edith
 Constants.MINIMUM_TRAVEL_DISTANCE = 10
@@ -116,77 +91,11 @@ Constants.CHANCE_REPLACE_FIRST_DEAL_1 = 50
 Constants.CHANCE_REPLACE_FIRST_DEAL_2 = 25
 Constants.EDITH_TEAR_SCALE = 0.2
 
---For tainted Edith
-Constants.BASE_TAINTED_SPEED = 5
-Constants.SULFURIC_CREEP_DURATION = 45
-
 --Salt shaker stuff
 Constants.SALT_CREEP_SCALE = 1
 Constants.SALT_CREEP_TIMEOUT = 300
 Constants.SALT_CREEP_SEPARATION = 20
 Constants.SALT_CREEP_DAMAGE = 2
-
---Sodom's rain stuff
-Constants.SODOMS_RAIN_METEORITE_MIN_INTERVAL = 60
-Constants.SODOMS_RAIN_METEORITE_BASE_SPAWN_CHANCE = 100
-
---Gomorrah's demise stuff
-Constants.GOMORRAHS_DEMISE_DURATION = 20 * 30 --20 seconds
-Constants.GOMORRAHS_DEMISE_METEORITE_INTERVAL = 12
-Constants.GOMORRAHS_DEMISE_BIG_METEORITE_CHANCE = 10
-
---Small meteorite stuff
-Constants.SMALL_METEORITE_FALLING_DIRECTION = Vector(1, 4):Normalized()
-Constants.SMALL_METEORITE_FALLING_SPEED = 13
-Constants.SMALL_METEORITE_STARTING_HEIGHT_BASE = 600
-Constants.SMALL_METEORITE_STARTING_HEIGHT_RANDOM = 200
-Constants.SMALL_METEORITE_RADIUS = 75
-Constants.SMALL_METEORITE_DAMAGE = 3 --Multiplies player damage
-Constants.SMALL_METEORITE_BURN_DURATION = 42
-Constants.SMALL_METEORITE_BURN_DAMAGE = 3 --Multiplies player damage
-
---Big meteorite stuff
-Constants.BIG_METEORITE_EXPLOSION_DAMAGE = 125
-Constants.BIG_METEORITE_BURN_DURATION = 62
-Constants.BIG_METEORITE_BURN_DAMAGE = 5 --Multiplies player damage
-
---Salt baby stuff
-Constants.SALT_BABY_TEAR_RATE = 20
-Constants.SALT_BABY_CREEP_TIMEOUT = 200
-Constants.SALT_BABY_CREEP_SCALE = 1
-
---Lot's Cup stuff
-Constants.LOTS_CUP_NAME = "Lot's Cup"
-Constants.LOTS_CUP_DESCRIPTION = "Fill it"
-Constants.LOTS_CUP_MAX_CHARGE = 20
-Constants.LOTS_CUP_HELPER_ITEMS = {}
-for i = 1, Constants.LOTS_CUP_MAX_CHARGE, 1 do
-	table.insert(Constants.LOTS_CUP_HELPER_ITEMS, Isaac.GetItemIdByName("Lot's Cup " .. i))
-end
-Constants.LOTS_CUP_POSSIBLE_STATS = {
-	CacheFlag.CACHE_FIREDELAY,
-	CacheFlag.CACHE_LUCK,
-	CacheFlag.CACHE_RANGE,
-	CacheFlag.CACHE_SHOTSPEED,
-	CacheFlag.CACHE_SPEED
-}
-Constants.LOTS_CUP_STAT_MULTIPLIER = {
-	[CacheFlag.CACHE_DAMAGE] = 0.07,
-	[CacheFlag.CACHE_FIREDELAY] = 0.1,
-	[CacheFlag.CACHE_LUCK] = 0.05,
-	[CacheFlag.CACHE_RANGE] = 10,
-	[CacheFlag.CACHE_SHOTSPEED] = 0.01,
-	[CacheFlag.CACHE_SPEED] = 0.01
-}
-Constants.LOTS_CUP_CREEP_SIZE_MULTIPLIER = 0.1
-Constants.LOTS_CUP_CREEP_SIZE_SPEED = 0.2
-Constants.LOTS_CUP_CREEP_TIMEOUT = 100
-
---Edith's Scarf stuff
-Constants.EDITHS_SCARF_TEARDELAY = 1.5
-Constants.EDITHS_SCARF_SHOTSPEED = 0.2
-Constants.EDITHS_SCARF_LUCK = -1
-Constants.EDITHS_SCARF_STAT_MULTIPLIER = 0.5
 
 --Edith's Curse stuff
 Constants.SALT_CURSE_CHANCE = 10
